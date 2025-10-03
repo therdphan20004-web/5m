@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สุขสันต์วันครบรอบของเรา! ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="intro-screen" class="screen active">
+        <img src="supawork-f48445686cd64cf99b1b12d4c576256e.gif" alt="Animated GIF" class="intro-gif">
+        <h1>...ป้อนรหัสลับเพื่อเข้าสู่โลกของเรา...</h1>
+        <form id="password-form">
+            <input type="password" id="password-input" placeholder="ใส่รหัสที่นี่" required>
+            <button type="submit" class="cta-button">เปิดเผยความลับ</button>
+            <p id="error-message" class="error-text"></p>
+        </form>
+    </div>
+
+    <audio id="background-music" loop>
+        <source src="music/your-song.mp3" type="audio/mpeg">
+        เบราว์เซอร์ของคุณไม่รองรับไฟล์เสียง
+    </audio>
+
+    <div id="main-content" class="screen">
+        
+        <div id="heart-container"></div> 
+
+        <div id="anniversary-slider" class="slider-container">
+            
+            <div class="slide-content-wrapper">
+                <div class="image-box">
+                    <img id="slide-image" src="1.png" alt="รูปภาพความทรงจำ">
+                </div>
+                
+                <div class="text-box">
+                    <h2 id="slide-title" class="slide-title">หน้า 1: จุดเริ่มต้นของเรา</h2>
+                    <p id="slide-caption" class="slide-caption">คำบรรยายความทรงจำที่ 1 ของเรา...</p>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="prev-button" class="nav-button">ย้อนกลับ</button>
+                <p id="page-indicator" class="page-indicator">หน้า 1 / 10</p>
+                <button id="next-button" class="nav-button">ถัดไป</button>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

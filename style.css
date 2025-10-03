@@ -1,0 +1,210 @@
+/* --- ส่วนรีเซ็ตและฟอนต์ --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sarabun', sans-serif; /* ใช้ฟอนต์ที่สวยงาม */
+}
+
+body {
+    background-color: #F8F8FF; /* สีพื้นหลังอ่อนโยน */
+    color: #333;
+    overflow: hidden; /* ป้องกันการเลื่อนที่ไม่ต้องการ */
+}
+
+/* --- การจัดการหน้าจอหลัก --- */
+.screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    transition: opacity 1s ease-in-out; /* เพิ่มความนุ่มนวลในการเปลี่ยนหน้า */
+    opacity: 0;
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+}
+
+/* --- สไตล์หน้าแรก (Intro Screen) --- */
+#intro-screen h1 {
+    font-weight: 400;
+    margin-bottom: 25px;
+    color: #8A2BE2; /* สีม่วงอ่อนโรแมนติก */
+}
+
+.intro-gif {
+    max-width: 250px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+#password-form input[type="password"] {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    width: 250px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#password-form input[type="password"]:focus {
+    border-color: #FF69B4; /* เปลี่ยนสีเมื่อโฟกัส */
+}
+
+.cta-button {
+    background-color: #FF69B4; /* สีชมพูหวาน */
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.cta-button:hover {
+    background-color: #FF1493;
+    transform: translateY(-2px);
+}
+
+.error-text {
+    color: #E91E63;
+    margin-top: 10px;
+}
+
+/* --- สไตล์เนื้อหาหลัก (Slider) --- */
+#main-content {
+    background: linear-gradient(135deg, #FAD0C4 0%, #FFD1FF 100%); /* พื้นหลังไล่สีละมุน */
+}
+
+.slider-container {
+    background-color: rgba(255, 255, 255, 0.95); /* กล่องเนื้อหาโปร่งใสเล็กน้อย */
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    max-width: 800px;
+    width: 90%;
+}
+
+.slide-content-wrapper {
+    display: flex;
+    flex-direction: column; /* เรียงจากบนลงล่างสำหรับมือถือ */
+    align-items: center;
+    transition: opacity 0.5s ease-in-out; /* เพิ่มความนุ่มนวลในการเปลี่ยนสไลด์ */
+}
+
+/* สำหรับจอใหญ่ ให้รูปอยู่ซ้าย ข้อความอยู่ขวา */
+@media (min-width: 768px) {
+    .slide-content-wrapper {
+        flex-direction: row;
+        text-align: left;
+    }
+    .image-box {
+        flex: 1;
+        padding-right: 30px;
+    }
+    .text-box {
+        flex: 1;
+    }
+}
+
+.image-box img {
+    max-width: 100%;
+    max-height: 40vh; 
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+.slide-title {
+    color: #8A2BE2;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.slide-caption {
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* --- ปุ่มควบคุมสไลด์ --- */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.nav-button {
+    background: none;
+    border: 2px solid #FF69B4;
+    color: #FF69B4;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.nav-button:hover {
+    background-color: #FF69B4;
+    color: white;
+}
+
+.page-indicator {
+    font-weight: 700;
+    color: #4B0082;
+}
+
+/* --- เอฟเฟกต์หัวใจ (Floating Hearts) --- */
+#heart-container {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    overflow: hidden; 
+    z-index: 1; /* ให้อยู่ด้านหลังสไลด์ */
+}
+
+.heart {
+    position: absolute;
+    bottom: -10vh; 
+    transform: rotate(-45deg);
+    opacity: 0.8;
+    
+    /* รูปร่างหัวใจ */
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: inherit; 
+    }
+    &::before { top: -50%; left: 0; }
+    &::after { top: 0; right: -50%; }
+    
+    /* Animation */
+    animation: float-up linear infinite;
+}
+
+@keyframes float-up {
+    0% { transform: translateY(0) rotate(-45deg); opacity: 0.8; }
+    100% { transform: translateY(-100vh) rotate(-45deg); opacity: 0; }
+}
